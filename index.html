@@ -5,9 +5,12 @@
   <title>Quick Test 😊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle, #ddd, #bbb);
       display: flex;
       justify-content: center;
@@ -40,8 +43,22 @@
       transform: translateY(10px);
     }
 
-    .card h2 { font-size: 24px; }
-    .card p { font-size: 15px; line-height: 1.6; }
+    .card h2, 
+    .card h3 {
+      font-family: 'Baloo 2', cursive;
+      letter-spacing: 1px;
+    }
+
+    .card h2 {
+      font-weight: 800;
+      font-size: 26px;
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
 
     button {
       margin: 14px 10px 0;
@@ -52,6 +69,8 @@
       font-size: 16px;
       transition: transform 0.2s ease, background 0.2s ease;
       color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
     }
 
     .yes-btn { background: #4CAF50; }
@@ -106,8 +125,35 @@ function growYes() {
     }
 }
 
+/* ===============================
+   TRANSITION PAGE
+================================ */
+
 function start() {
     noCount = 0;
+    transitionPage();
+}
+
+function transitionPage() {
+    changePage(`
+    <img src="https://media.tenor.com/j3y5ndoqyAAAAAAi/let%27s-go-the-super-mario-galaxy-movie.gif"
+           style="display:block; margin:16px auto 0; width:200px; height:200px;">
+
+        <div style="font-size:70px;">✨</div>
+        <h2>Let’s Begin…</h2>
+        <p>Get ready 😌</p>
+    `);
+
+    setTimeout(() => {
+        startRealQuestion();
+    }, 3000);
+}
+
+/* ===============================
+   REAL QUESTIONS
+================================ */
+
+function startRealQuestion() {
     changePage(`
       <h2>Is this Sanny? 😊</h2>
       <button class="yes-btn" onclick="smileQuestion()">Yes</button>
@@ -120,8 +166,14 @@ function notForYou() {
       <h2>😄 Oops!</h2>
       <p>Looks like this one isn’t for you.</p>
       <p>Please give this to Sanny!!!</p>
+
       <img src="https://media.tenor.com/4Hjm_J72ZEcAAAAi/milk-mocha-bear-cheek-pull.gif"
            style="display:block; margin:16px auto 0; width:150px; height:150px;">
+
+      <br><br><button class="yes-btn" onclick="startRealQuestion()" 
+              style="margin-top: 24px;">
+              Fine, fine, 😤 I’ll give it
+      </button><br><br>
     `);
 }
 
@@ -197,8 +249,8 @@ function moveNoButton() {
         const sticker = document.createElement('img');
         sticker.src = 'https://media.tenor.com/ML8iuahL1YAAAAAj/manhphongg.gif';
         sticker.style.position = 'absolute';
-        sticker.style.width = '50px';
-        sticker.style.height = '50px';
+        sticker.style.width = '70px';
+        sticker.style.height = '70px';
         sticker.style.left = `${x + Math.random() * btnWidth}px`;
         sticker.style.top = `${y - 50 - Math.random() * 30}px`;
         sticker.style.pointerEvents = 'none';
@@ -218,12 +270,11 @@ function final() {
       <p>
         Hi San 😊<br><br>
         Thank you for taking this little test — nothing too serious, just for fun!<br><br>
-        Wishing you a very happy Valentine’s Day 😁<br><br>
+        Just wishing you a very happy Valentine’s Day 😁<br><br>
         I also have a small gift for you — it might take a little time to arrive, so please be patient 🙂<br><br>
         I hope this brings a smile to your day and makes it a little brighter!
       </p>
 
-      <br>
       <h3>Are you happy? 😊</h3>
       <button class="yes-btn" onclick="happyPage()">Click this if YES 😆</button>
     `);
