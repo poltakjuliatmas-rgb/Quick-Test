@@ -211,7 +211,14 @@ function changeSmileNo() {
     } else if (smileNoCount === 4) {
         btn.innerText = "Okay okay, smile now 😆";
     } else {
-        question2();
+        changePage(`
+            <h2>Good. That’s all I wanted 😊</h2>
+            <p>You look better already 😁</p>
+        `);
+
+        setTimeout(() => {
+            question2();
+        }, 2000);
     }
 }
 
@@ -297,6 +304,7 @@ function happyPage() {
 </script>
 </body>
 </html>
+
 
 
 
